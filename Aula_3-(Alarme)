@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 int main()
 {
@@ -12,17 +13,25 @@ int main()
    printf("    Alarme:");
    scanf("%d %d %d", &a, &b, &c);
 
-
    printf("\n\n");
-
 
    while (1)
       {
        printf("\r   Hora: %2dh %2dm %2ds", hora, minuto, segundo);
        if ((hora==a) && (minuto==b) && (segundo==c)){
-            printf("\n\n\n---------ACORDA!!---------");
-            break;
-        }
+            printf("\n\n\n---------ACORDA!!---------\n\n\n\n\n\n");
+            PlaySound("estressadinha.wav", NULL, SND_ASYNC);
+            while(1){
+                if (kbhit())
+                {
+                    int  tecla_para = getch();
+                      if (tecla_para=='p') break;
+                }
+
+                   }
+
+                  break;
+                                                    }
        segundo ++;
        if(segundo==60)
             {
