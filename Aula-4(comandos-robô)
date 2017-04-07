@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
+int main()
+{
+
+  char s1, s2, s3, m1, m2, n;
+
+m1=0;
+m2=0;
+ while(1){
+ printf("\r m1-%d m2-%d", m1, m2   );
+  if (kbhit()) {
+    int teclaA = getch();
+      if (teclaA == 'a') {
+            s1=1, s2=1, s3=1;
+            n=1;
+
+      }
+      int teclaS = getch();
+        if (teclaS == 's'){
+            s1=1, s2=0, s3=1;
+            n=2;
+
+        }
+        int teclaD = getch();
+          if (teclaD == 'd'){
+            s1=1, s2=1, s3=0;
+            n=3;
+
+        }
+
+      int teclaF = getch();
+          if (teclaF == 'f'){
+           s1=0, s2=1, s3=1;
+           n=4;
+
+                }
+
+       int teclaG = getch();
+          if (teclaG == 'g'){
+         s1=1, s2=0, s3=0;
+         n=5;
+         }
+
+       int teclaH = getch();
+          if (teclaH == 'h'){
+            s1=0, s2=1, s3=0;
+            n=6;
+          }
+        int teclaJ = getch();
+
+          if (teclaJ == 'j'){
+            s1=0, s2=0, s3=1;
+            n=7;
+          }
+        int teclaK = getch();
+
+          if (teclaK == 'k'){
+            s1=0, s2=0, s3=0;
+            n=8;
+          }
+
+
+
+
+
+
+ if(n==1) {
+    m1=0;
+    m2=1;
+ }
+
+  if(n==2) {
+    m1=1;
+    m2=1;
+ }
+
+  if(n==3) {
+    m1=1;
+    m2=0;
+ }
+
+  if(n==4) {
+    m1=0;
+    m2=1;
+ }
+
+  if(n==5) {
+    m1=1;
+    m2=0;
+ }
+
+  if(n==6) {
+    m1=0;
+    m2=1;
+ }
+
+  if(n==7) {
+    m1=0;
+    m2=1;
+ }
+
+  if(n==8) {
+    m1=1;
+    m2=1;
+ }
+
+ sleep(0.5);
+
+  }
+ }
+
+ return 0;
+  }
