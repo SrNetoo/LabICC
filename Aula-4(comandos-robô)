@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <windows.h> //perguntar o porque de m1=126 e m2=3 quando vc nao decalara que m1=0 e m2=0 (linha 10 e 11)
 
 int main()
 {
