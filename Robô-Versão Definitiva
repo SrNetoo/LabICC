@@ -14,8 +14,8 @@ m1=0;
 m2=0;
 
  while(1){
- printf("\r s1=%d s2=%d s3=%d \n" s1, s2, s3);
-  printf("\r m1-%d m2-%d \n", m1, m2   );
+ printf("\r S1= %d S2= %d S3= %d // M1= %d M2= %d ", s1, s2, s3, m1, m2);
+
 
   if (kbhit()) {
     int teclaX = getch();
@@ -24,43 +24,43 @@ m2=0;
             n=1;
 
       }
-     
+
         if (teclaX == 's'){
             s1=1, s2=0, s3=1;
             n=2;
 
         }
-        
+
           if (teclaX == 'd'){
             s1=1, s2=1, s3=0;
             n=3;
 
         }
 
-      
+
           if (teclaX == 'f'){
            s1=0, s2=1, s3=1;
            n=4;
 
                 }
 
-       
+
           if (teclaX == 'g'){
          s1=1, s2=0, s3=0;
          n=5;
          }
 
-      
+
           if (teclaX == 'h'){
             s1=0, s2=1, s3=0;
             n=6;
           }
-       
+
           if (teclaX == 'j'){
             s1=0, s2=0, s3=1;
             n=7;
           }
-        
+
           if (teclaX == 'k'){
             s1=0, s2=0, s3=0;
             n=8;
@@ -118,3 +118,4 @@ m2=0;
 
  return 0;
   }
+
