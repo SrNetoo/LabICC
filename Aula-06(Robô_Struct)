@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h> //perguntar o porque de m1=126 e m2=3 quando vc nao decalara que m1=0 e m2=0 (linha 10 e 11)
+
+struct Sensor{
+int S1;
+int S2;
+int S3;
+};
+
+struct Leitura{
+int M1;
+int M2;
+};
+
+struct Sensor Lesens();
+struct Leitura IA();
+void DriveMotors();
+
+ struct Sensor Lesens(void){
+
+     int sensor1, sensor2, sensor3,leitura1,leitura2,leitura3;
+     scanf("%d %d %d", &sensor1, &sensor2, &sensor3);
+     if (sensor1<35){
+        leitura1=1;
+     }
+         else{
+            leitura1=0;
+        }
+
+     if (sensor2<35){
+        leitura2=1;
+     }
+        else{
+            leitura2=0;
+        }
+
+        if (sensor3<35){
+        leitura3=1;
+     }
+        else{
+            leitura3=0;
+        }
+
+        struct Sensor leituras;
+        leituras.S1=leitura1;
+        leituras.S2=leitura2;
+        leituras.S3=leitura3;
+
+return leituras;
+ }
+  struct Leitura IA(int sens1, int sens2, int sens3){
+      int m1, m2;
+      if((sens1==1) && (sens2==1) && (sens3==1)){
+    m1=0;
+    m2=1;
+ }
+  if((sens1==1) && (sens2==0) && (sens3==1)){
+        m1=1;
+        m2=1;
+ }
+ if((sens1==1) && (sens2==1) && (sens3==0)){
+    m1=1;
+    m2=0;
+ }
+ if((sens1==0) && (sens2==1) && (sens3==1)){
+    m1=0;
+    m2=1;
+ }
+ if((sens1==1) && (sens2==0) && (sens3==0)){
+    m1=1;
+    m2=0;
+ }
+ if((sens1==0) && (sens2==1) && (sens3==0)){
+    m1=0;
+    m2=1;
+ }
+ if((sens1==0) && (sens2==0) && (sens3==1)){
+    m1=0;
+    m2=1;
+ }
+ if((sens1==0) && (sens2==0) && (sens3==0)){
+    m1=1;
+    m2=1;
+ }
+
+ struct Leitura motores;
+ motores.M1=m1;
+ motores.M2=m2;
+
+printf(" S1= %d S2= %d S3= %d // " ,sens1, sens2, sens3 );
+
+return motores;
+  }
+  void DriveMotor(int mot1, int mot2){
+ printf(" M1= %d M2= %d \n\n", mot1, mot2);
+
+}
+
+
+int main()
+{
+int s1,s2,s3,m1,m2;
+struct Sensor X;
+struct Leitura Y;
+
+while(1){
+  X=Lesens();
+  s1=X.S1;
+  s2=X.S2;
+  s3=X.S3;
+
+  Y=IA(s1,s2,s3);
+  m1=Y.M1;
+  m2=Y.M2;
+
+  DriveMotor(m1,m2);
+   Sleep(2);
+}
+
+
+
+ return 0;
+  }
