@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h> //perguntar o porque de m1=126 e m2=3 quando vc nao decalara que m1=0 e m2=0 (linha 10 e 11)
+
+struct Sensor{
+int S1;
+int S2;
+int S3;
+};
+
+struct Leitura{
+int M1;
+int M2;
+};
+
+struct Sensor Lesens();
+struct Leitura IA();
+void DriveMotors();
+
+ struct Sensor Lesens(void){
+
+     int sensor1, sensor2, sensor3,leitura1,leitura2,leitura3;
+     scanf("%d %d %d", &sensor1, &sensor2, &sensor3);
+     if (sensor1<35){
+        leitura1=1;
+     }
+         else{
+            leitura1=0;
+        }
+
+     if (sensor2<35){
+        leitura2=1;
+     }
+        else{
+            leitura2=0;
+        }
+
+        if (sensor3<35){
+        leitura3=1;
+     }
+        else{
+            leitura3=0;
+        }
+
+        struct Sensor leituras;
+        leituras.S1=leitura1;
+        leituras.S2=leitura2;
+        leituras.S3=leitura3;
+
+return leituras;
+ }
+  struct Leitura IA(struct Sensor ia_sensor){
+    struct Leitura motores;
+
+      if((ia_sensor.S1==1) && (ia_sensor.S2==1) && (ia_sensor.S3==1)){
+    motores.M1=0;
+    motores.M2=1;
+ }
+  if((ia_sensor.S1==1) && (ia_sensor.S2==0) && (ia_sensor.S3==1)){
+        motores.M1=1;
+        motores.M2=1;
+ }
+ if((ia_sensor.S1==1) && (ia_sensor.S2==1) && (ia_sensor.S3==0)){
+    motores.M1=1;
+    motores.M2=0;
+ }
+ if((ia_sensor.S1==0) && (ia_sensor.S2==1) && (ia_sensor.S3==1)){
+    motores.M1=0;
+    motores.M2=1;
+ }
+ if((ia_sensor.S1==1) && (ia_sensor.S2==0) && (ia_sensor.S3==0)){
+    motores.M1=1;
+    motores.M2=0;
+ }
+ if((ia_sensor.S1==0) && (ia_sensor.S2==1) && (ia_sensor.S3==0)){
+    motores.M1=0;
+    motores.M2=1;
+ }
+ if((ia_sensor.S1==0) && (ia_sensor.S2==0) && (ia_sensor.S3==1)){
+    motores.M1=0;
+    motores.M2=1;
+ }
+ if((ia_sensor.S1==0) && (ia_sensor.S2==0) && (ia_sensor.S3==0)){
+    motores.M1=1;
+    motores.M2=1;
+ }
+
+printf(" S1= %d S2= %d S3= %d // " ,ia_sensor.S1, ia_sensor.S2, ia_sensor.S3 );
+
+return motores;
+  }
+  void DriveMotor(struct Leitura ia_motor){
+ printf(" M1= %d M2= %d \n\n", ia_motor.M1, ia_motor.M2);
+
+}
+
+
+int main()
+{
+
+while(1){
+
+  DriveMotor(IA(Lesens()));
+   Sleep(2);
+}
+
+
+ return 0;
+  }
