@@ -1,0 +1,371 @@
+#include <stdio.h>
+#include <stdlib.h>
+char x,a;
+int visita=10;
+int i,f,j,p;
+int A[12];
+int culpado,motivo,paradeiro;
+
+void titulo(){
+	printf("      ____           _____  _____      _____      \n");
+	printf("     |      |    |  |      |     |    |     |  |   /   | \n");
+	printf("     |____  |____|  |___   |_____|    |     |  |__/    | \n");
+	printf("         |  |    |  |      |      |   |     |  |   |   |  \n");
+   	printf("     ____|  |    |  |_____ |       |  |_____|  |    |  |  \n\n");
+   	printf("                  _____     _     _       ____  \n");
+	printf("          |    | |     |   | |   | |  |  |      \n");
+    printf("          |____| |     |   |  | |  |  |  |____   \n");
+	printf("          |    | |     |   |   V   |  |       |  \n");
+	printf("          |    | |_____|   |       |  |   ____|   \n");
+}
+
+void instrucao(){
+	printf("Instrucao:\n");
+	printf("Esse jogo se passa em Londris, voce eh o famigerado Sheroki Homis e deve\n");
+	printf("desvendar o caso a lhe ser apresentado. A cidade possui 12 lugares rele-\n");
+	printf("vantes para sua investigacao, em cada lugar voce encontrara 1 pista sobre\n");
+	printf("o caso, voce pode visitar 10 lugares (Depois de visitados os 10 locais voce\n");
+	printf("pode retornar aos locais anteriormente ja visitados mas nao podera visitar\n");
+	printf("novos locais). Quando tiver colhido pistas suficientes para desvendar o caso\n");
+	printf("va para a casa de Sheroki para dar seu veredito final.\n");
+	printf("Uma vez que ir a casa de Sheroki voce nao podera rever as pistas entao tenha certeza\n");
+	printf("de que ja tenha resolvido o caso!\n");
+	printf("Boa Sorte!    (Pressione Enter para prosseguir)");
+}
+
+void historia(){
+	
+	printf("Sir Oliver morreu recentemente, deixando so tres parentes vivos:\n");
+	printf("seus filhos Joao e Tomeh, e sua sobrinha Katarina. Durante a\n"); 
+	printf("leitura do testamento, o advogado Willian revelou que Oliver\n");
+	printf("tinha deixado toda sua fortuna para Katarina, unico parente\n");
+	printf("de que ele gostava. Profundamente zangado, Joao ameacou\n");
+	printf("rejeitar o testamento e precipitou-se para fora do quarto.\n\n");
+	printf("Joao desapareceu dois dias mais tarde. No transcurso das \n");
+	printf("investigacoes, a Scotilandiard descobriu o seguinte: Silvia\n");
+	printf("empregada de Katarina, diz ter escutado Katarina ameacar\n");
+	printf("Joao de morte, caso ele impetrasse uma acao legal contra\n");
+	printf("o testamento; sangue fresco foi encontrado no tapete da\n");
+	printf("sala de Katarina; Marvin, que trabalha no porto, encontrou\n");
+	printf("um dos sapatos de Joao que tinha sido levado a praia pelas\n");
+	printf("ondas. A Scotlandiard recebeu um telefonema anonimo, dizendo\n");
+	printf("que Katarina tinha sido vista na noite anterior ao desaparecimento\n");
+	printf("de Joao jogando alguma coisa na baia.\n\n");
+	printf("Esses dados, com o fato que Katarina possuia um revolver, fizeram\n");
+	printf("com que senhor Lestrade prendesse Katarina, acusando-a do \n");
+	printf("assasinato de seu primo e de jogar o corpo na baia.\n");
+	printf("Ele acredita que o corpo sera facilmente achado dragando-se\n"); 
+	printf("na agua em volta do cais.\n\n");
+	printf("Homis nao tem tanta certeza. Frederico, noivo de Katarina,\n");
+	printf("pediu-lhe para intervir no caso. Frederico disse ao detetive\n");
+	printf("que o corpo de Joao nao esta na baia. Homis pretende descobrir:\n");
+	printf("a)quem eh o responsavel pelo desaparecimento de Joao\n");
+	printf("b)o motivo\n");
+	printf("c)o paradeiro de Joao  (Pressione Enter para prosseguir)");
+	
+}
+
+void lugares(){
+	printf(" Lugares notaveis de Londriz:\n1) Farmacia               7) Livraria\n2) Banco                  8) Parque\n3) Estacao de Carruagem   9) Casa de Penhores\n4) Docas                  10) Teatro\n5) Hotel                  11) Bar\n6) Chaveiro               12) Scotilandiard\n");
+    printf("                          13) Casa de Sheroki\n\n         14) Reler o caso\n\n\n");
+	printf("Voce tem mais %d visitas disponiveis\n\n", visita);
+	printf("Digite o numero correspondente ao local desejado:");
+	scanf("%d",&f);
+
+}
+
+void pistas(){
+	if(f==1){
+		printf("\nJoao eh vegetariano \n\npressione Enter para voltar");
+		if (A[0]==0){
+			visita--;
+		}
+		A[0]=1;
+	scanf("%c",&x);
+	}
+		if(f==2){
+		printf("\nSe, por alguma razao, Katarina nao puder receber a heranca,\nela sera dividida entre Joao e Tomeh\n\npressione Enter para voltar");
+   		if (A[1]==0){
+			visita--;
+		}
+		A[1]=1;
+		scanf("%c",&x);
+	}
+		if(f==3){
+		printf("\nNao ha pista\n\npressione Enter para voltar");
+		if (A[2]==0){
+			visita--;
+		}
+		A[2]=1;
+		scanf("%c",&x);
+	}
+		if(f==4){
+		printf("\nTomeh foi visto aqui na noite anterior ao aparecimento\ndo sapato de Joao\n\npressione Enter para voltar");
+	if (A[3]==0){
+			visita--;
+		}
+		A[3]=1;
+		scanf("%c",&x);
+	}
+		if(f==5){
+		printf("\nUm homem de barba espessa e bigode registrou-se no hotel\ne pediu que lhe sirvam unicamente refeicoes sem carne\n\npressione Enter para voltar");
+		if (A[4]==0){
+			visita--;
+		}
+		A[4]=1;
+		scanf("%c",&x);
+	}
+		if(f==6){
+		printf("\nSilvia tem um caso com Tomeh e faz tudo que ele quer\n\npressione Enter para voltar");
+		if (A[5]==0){
+			visita--;
+		}
+		A[5]=1;
+		scanf("%c",&x);
+	}
+		if(f==7){
+		printf("\nUm dos pares do sapato de Joao desapareceu\n\npressione Enter para voltar");
+	if (A[6]==0){
+			visita--;
+		}
+		A[6]=1;
+		scanf("%c",&x);
+	}
+		if(f==8){
+		printf("\nCerta vez Joao humilhou Frederico publicamente e este jurou\n vingar-se algum dia\n\npressione Enter para voltar");
+		if (A[7]==0){
+			visita--;
+		}
+		A[7]=1;
+		scanf("%c",&x);
+	}
+		if(f==9){
+		printf("\nJoao comprou aqui, antes de seu desaparecimento, uma barba e um\nbigode falso\n\npressione Enter para voltar");
+		if (A[8]==0){
+			visita--;
+		}
+		A[8]=1;
+		scanf("%c",&x);
+	}
+		if(f==10){
+		printf("\nWillian pensou que ia herdar uma parte da fortuna de Sir Oliver\n\npressione Enter para voltar");
+		if (A[9]==0){
+			visita--;
+		}
+		A[9]=1;
+		scanf("%c",&x);
+	}
+	if(f==11){
+		printf("\nTomeh foi visto na telefonica no memso dia que a Scotlandiard\nrecebeu o telefonema anonimo\n\npressione Enter para voltar");
+		if (A[10]==0){
+			visita--;
+		}
+		A[10]=1;
+		scanf("%c",&x);
+	}
+	if(f==12){
+		printf("\nO sangue no tapete de Katarina eh do mesmo tipo que o de Joao\n\npressione Enter para voltar");
+		if (A[11]==0){
+			visita--;
+		}
+		A[11]=1;
+		scanf("%c",&x);
+	}
+	if(f==14){
+		historia();
+	scanf("%c", &x);		
+	}
+	
+}
+
+void pistas2(){
+		if(f==1){
+		printf("\nJoao eh vegetariano \n\npressione Enter para voltar");
+	
+	scanf("%c",&x);
+	}
+		if(f==2){
+		printf("\nSe, por alguma razao, Katarina nao puder receber a heranca,\nela sera dividida entre Joao e Tomeh\n\npressione Enter para voltar");
+   	
+		scanf("%c",&x);
+	}
+		if(f==3){
+		printf("\nNao ha pista\n\npressione Enter para voltar");
+		
+		scanf("%c",&x);
+	}
+		if(f==4){
+		printf("\nTomeh foi visto aqui na noite anterior ao aparecimento\ndo sapato de Joao\n\npressione Enter para voltar");
+
+		scanf("%c",&x);
+	}
+		if(f==5){
+		printf("\nUm homem de barba espessa e bigode registrou-se no hotel\ne pediu que lhe sirvam unicamente refeicoes sem carne\n\npressione Enter para voltar");
+		
+		scanf("%c",&x);
+	}
+		if(f==6){
+		printf("\nSilvia tem um caso com Tomeh e faz tudo que ele quer\n\npressione Enter para voltar");
+		
+		scanf("%c",&x);
+	}
+		if(f==7){
+		printf("\nUm dos pares do sapato de Joao desapareceu\n\npressione Enter para voltar");
+	
+		scanf("%c",&x);
+	}
+		if(f==8){
+		printf("\nCerta vez Joao humilhou Frederico publicamente e este jurou\n vingar-se algum dia\n\npressione Enter para voltar");
+	
+		scanf("%c",&x);
+	}
+		if(f==9){
+		printf("\nJoao comprou aqui, antes de seu desaparecimento, uma barba e um\nbigode falso\n\npressione Enter para voltar");
+	
+		scanf("%c",&x);
+	}
+		if(f==10){
+		printf("\nWillian pensou que ia herdar uma parte da fortuna de Sir Oliver\n\npressione Enter para voltar");
+	
+		scanf("%c",&x);
+	}
+	if(f==11){
+		printf("\nTomeh foi visto na telefonica no memso dia que a Scotlandiard\nrecebeu o telefonema anonimo\n\npressione Enter para voltar");
+	
+		scanf("%c",&x);
+	}
+	if(f==12){
+		printf("\nO sangue no tapete de Katarina eh do mesmo tipo que o de Joao\n\npressione Enter para voltar");
+	
+		scanf("%c",&x);
+	}
+	if(f==14){
+		historia();
+		scanf("%c", &x);
+	}
+	
+}
+
+void resultadoculpado(){
+	system("cls");
+	printf("Ok, entao voce desvendou o caso?\n");
+	printf("Entao vamos la, quem eh(sao) o(s) responsavei(s) pelo desaparecimento de Joao?\n\n");
+	printf("1) Katarina               4) Marvin e Silvia\n2) Joao e Tomeh           5) Tomeh\n3) Tomeh e Willian        6) Silvia e Tomeh\n");
+	printf("Digite o numero correspondente ao(s) culpado(s):");
+	scanf("%d",&culpado);
+	if(culpado>6){
+		resultadoculpado();
+	}
+
+}
+
+void resultadomotivo(){
+	system("cls");
+	printf("E qual foi o motivo?:\n");
+	printf("1) Traicao               3) Ciumes\n2) Inveja                4) Dinheiro\n");
+	printf("Digite o numero correpondente ao motivo:");
+	scanf("%d", &motivo);
+	if(motivo>4){
+		resultadomotivo();
+	}
+}
+	
+void resultadoparadeiro(){
+	system("cls");
+printf("Qual o paradeiro de Joao?\n");
+	printf("1) Docas              3) Hotel\n2) Bar                4) Parque\n");
+	printf("Digite o numero correspondente ao paradeiro:");
+	scanf("%d", &paradeiro);
+	if(paradeiro>4){
+		resultadoparadeiro();
+	}
+}
+
+void fim(){
+	if(culpado==2 && motivo==4 && paradeiro==3){
+		printf("Parabens Sheroki, fez juz ao seu nome\n");
+		printf("O que ocorreu foi o seguinte: Zangados pelo fato de que Oliver nao lhes deixou nada, Joao e Tomeh forjaram\n");
+		printf("um esquema para obter a fortuna de Katarina.\n\n");
+		printf("Eles organizaram um plano para incriminar Katarina pela morte de Joao e pelo lancamento de seu corpo na baia.\n");
+		printf("Inicialmente, Tomeh persuadiu sua amante, Silvia, para que contasse a policia que tinha ouvido Katarina ameacar Joao.\n");
+		printf("Entao eles colocaram um pouco do sangue de Joao no tapete de Katarina e jogaram seus sapatos na baia, onde Marvin \n");
+		printf("encontrou um deles. Joao, disfarcado com uma barba e um bigode, escondeu-se no hotel. Tomeh fez um telefonema\n");
+		printf("anonimo do bar para incriminar ainda mais Katarina.\n\n");
+		printf("Eles esperavam que Katarina fosse considerada culpada e condenada a morte. A fortuna passaria entao para Tomeh,\n");
+		printf("que repartiria com Joao.\n\n");
+		printf("OBRIGADO POR JOGAR!");
+	}
+	else{
+		printf("ERRRROOOOOOWWWWW, voce ta mais pra Shrek do que pra Sheroki.\n");
+		printf("Vou te contar oque realmente aconteceu: Zangados pelo fato de que Oliver nao lhes deixou nada, Joao e Tomeh forjaram\n");
+		printf("um esquema para obter a fortuna de Katarina.\n\n");
+		printf("Eles organizaram um plano para incriminar Katarina pela morte de Joao e pelo lancamento de seu corpo na baia.\n");
+		printf("Inicialmente, Tomeh persuadiu sua amante, Silvia, para que contasse a policia que tinha ouvido Katarina ameacar Joao.\n");
+		printf("Entao eles colocaram um pouco do sangue de Joao no tapete de Katarina e jogaram seus sapatos na baia, onde Marvin \n");
+		printf("encontrou um deles. Joao, disfarcado com uma barba e um bigode, escondeu-se no hotel. Tomeh fez um telefonema\n");
+		printf("anonimo do bar para incriminar ainda mais Katarina.\n\n");
+		printf("Eles esperavam que Katarina fosse considerada culpada e condenada a morte. A fortuna passaria entao para Tomeh,\n");
+		printf("que repartiria com Joao.\n\n");
+		printf("OBRIGADO POR JOGAR!");
+	}
+}
+
+void proxetapa(){
+	scanf("%c",&x);
+	system("cls");
+}
+
+void lugar_pista(){
+while(visita>0 && f!=13){
+	lugares();
+	system("cls");
+	pistas();
+ proxetapa();
+   
+}
+}
+
+void revisao(){
+	while(f!=13){
+	lugares();
+	if(A[f-1]==0 && f<14){
+		system("cls");
+		printf("\nSuas visitas acabaram");
+			scanf("%c",&a);
+			proxetapa();
+	
+		}
+		else{
+			system("cls");
+			pistas2();
+	proxetapa();
+		}
+	}
+}
+
+
+
+
+
+
+int main() {
+	for(i=12 ; i > 0 ; i--){
+	A[i]=0;
+}
+	titulo(); 
+	proxetapa();
+	instrucao();
+	proxetapa();
+	historia();
+	proxetapa();
+	lugar_pista();
+	revisao();
+	resultadoculpado();
+	resultadomotivo();
+	resultadoparadeiro();
+	system("cls");
+	fim();
+
+	
+	return 0;
+}
