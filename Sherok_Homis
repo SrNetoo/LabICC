@@ -67,7 +67,7 @@ void historia(){
 
 void lugares(){
 	printf(" Lugares notaveis de Londriz:\n1) Farmacia               7) Livraria\n2) Banco                  8) Parque\n3) Estacao de Carruagem   9) Casa de Penhores\n4) Docas                  10) Teatro\n5) Hotel                  11) Bar\n6) Chaveiro               12) Scotilandiard\n");
-    printf("                          13) Casa de Sheroki\n\n         14) Reler o caso\n\n\n");
+    printf("                          13) Casa de Sheroki(indo aqui nao podera voltar as pistas)\n\n         14) Reler o caso\n\n\n");
 	printf("Voce tem mais %d visitas disponiveis\n\n", visita);
 	printf("Digite o numero correspondente ao local desejado:");
 	scanf("%d",&f);
@@ -330,7 +330,7 @@ void revisao(){
 	lugares();
 	if(A[f-1]==0 && f<14){
 		system("cls");
-		printf("\nSuas visitas acabaram");
+		printf("\nSuas visitas acabaram\n\nPressione Enter para voltar");
 			scanf("%c",&a);
 			proxetapa();
 	
