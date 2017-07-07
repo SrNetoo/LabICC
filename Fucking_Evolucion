@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> //https://www.wolframalpha.com/input/?i=-((x-10)%5E2)%2B100 site contendo o grafico da funcao analisada nesse codigo
 #include <stdlib.h>
 #include <time.h>
 
