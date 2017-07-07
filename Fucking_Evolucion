@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int a,b,c;
+a=0;
+b=0;
+c=1;
+
+float sehkssu(float melhor, float ind){
+	int mutacion;
+	mutacion= rand()%100;
+
+	if (mutacion<=15){
+	mutacion=3;
+	}
+	else{
+		mutacion=0;
+	}
+	
+	float filhin;
+	filhin=((melhor+ind)/2+mutacion);
+	return filhin;
+}
+
+
+void fuckingevolucao(float ind1,float ind2, float ind3, float ind4, float ind5){
+
+float ocara,ocara2;
+int i,referencia,referencia2;
+
+srand(time(NULL));
+
+float individuos[5];
+float individuos2[5];
+float y[5];
+float y2[5];
+
+if(a==0){                                                //da os primeiros valores para os individuos(x)
+		for(i=0;i<5;i++){
+	individuos[i]= (100.0*((float)(rand())/RAND_MAX));
+	
+	printf("Individuos%d: %f\n", i, individuos[i]);
+}
+}
+else{                                                    //substitui o os individuos antigos pelos novos
+
+	individuos[0]=ind1;
+	individuos[1]=ind2;
+	individuos[2]=ind3;
+	individuos[3]=ind4;
+	individuos[4]=ind5;
+	
+	for(i=0;i<5;i++){
+	printf("Individuos1 %d: %f\n", i, individuos[i]);	
+	}
+}
+
+a++;
+
+printf("\n");
+
+for(i=0;i<5;i++){                                          // qualifica os individuos (y)
+	
+	 y[i]= -((individuos[i]-10)*(individuos[i]-10))+100;  // y= -(x-10)^2+100
+	 printf("Valor Y do individuo %d = %f\n", i, y[i]);
+
+}
+
+printf("\n");
+
+float maiorvalor=y[0];                                   // acha o melhor individuo
+for(i=0;i<5;i++){
+	if(maiorvalor<=y[i]){
+		maiorvalor=y[i];
+		ocara=individuos[i];
+		referencia=i;
+	}
+}
+
+printf(" O melhor valor de x1 eh: %f, e seu y1 eh: %f\n\n", ocara, maiorvalor);
+
+
+
+for(i=0;i<5;i++){                                              // sékssu entre o melhor individuo e o resto, cria os novos individuos x2
+	if(i!=referencia){
+
+		individuos2[i]=sehkssu(individuos[referencia],individuos[i]);
+		
+	}
+	else{                                                       
+
+		individuos2[referencia]=individuos[referencia];
+	}
+}
+
+for(i=0;i<5;i++){
+	printf("Individuo2 %d : %f\n", i , individuos2[i]);
+}
+printf("\n");
+
+
+
+for(i=0;i<5;i++){                                                  //qualifica os individuos novos y2
+	if(i!=referencia){
+	
+	 y2[i]= -((individuos2[i]-10)*(individuos2[i]-10))+100;
+	 
+	 
+	 }
+	 else{
+	 	y2[i]=y[i];
+	 }
+
+}
+
+for(i=0;i<5;i++){
+	 printf("Valor Y2 do individuo %d = %f\n", i, y2[i]);
+}
+
+float maiorvalor2= y2[0];                               // acha o melhor individuo
+
+for(i=0;i<5;i++){
+	if(maiorvalor2<=y2[i]){
+		maiorvalor2=y2[i];
+		ocara2=individuos2[i];
+		referencia2=i;
+	}
+}
+
+printf("\n O melhor valor de x eh: %f, e seu y eh: %f\n\n Esta eh a %d geracao!", ocara2, maiorvalor2,c);
+
+
+float diferenca;
+
+diferenca=y[referencia]-y2[referencia2];
+
+if(diferenca>(0.00001) ||  diferenca<-(0.00001) || diferenca==0){           // se a diferenca entre o melhor individuo antigo e o novo for minima, o ápice foi encontrado
+	if (diferenca==0){                                                      // caso contrário outra geracao é criada
+		b++;
+	}
+	else{
+		b=0;
+	}
+	if (c % 50==0){                                                          // gera um individuo longe da onde os demais estao se concentrando
+		individuos2[2]=individuos[2]-100;
+		y2[2]=-((individuos2[referencia2]-10)*(individuos2[referencia2]-10))+100;
+		printf("\n variacao de x2: %f e seu y2: %f", individuos[2], y2[2]);
+	}
+	 if (c % 35 ==0){
+	 	individuos[2]=individuos[2]+100.0;
+	 	y2[2]=-((individuos2[referencia2]-10)*(individuos2[referencia2]-10))+100;
+	 	printf("\n variacao de x2: %f e seu y2: %f", individuos[2], y2[2]);
+	 }
+	 if(b==200){
+	 	system("cls");
+		printf("\n\n O cara mais forte (x) eh: %f, e sua forca (y) vale: %f\n\n Esta eh a %d geracao!\n\n", ocara2, maiorvalor2,c);
+		exit(0);
+	 	
+	 }
+	
+c++;                                                                        // conta as geraçoes
+//sleep(1);
+system("cls");
+fuckingevolucao(individuos2[0],individuos2[1],individuos2[2],individuos2[3],individuos2[4]);
+
+
+}
+                                                                          
+system("cls");
+printf("\n\n O cara mais forte (x) eh: %f, e sua forca (y) vale: %f\n\n Esta eh a %d geracao!\n\n", ocara2, maiorvalor2,c);
+exit(0);
+
+
+}
+
+
+
+
+int main() {
+
+    fuckingevolucao(0,0,0,0,0);
+			
+	return 0;
+}
